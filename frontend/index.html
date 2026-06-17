@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CI/CD Dashboard - Monorepo Demonstration</title>
+  <!-- Google Fonts: Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/src/style.css">
+</head>
+<body>
+  <div class="background-decorations">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+  </div>
+
+  <main class="app-container">
+    <header class="app-header">
+      <div class="logo-container">
+        <div class="logo-icon">∞</div>
+        <h1>CI/CD Monorepo TP</h1>
+      </div>
+      <p class="subtitle">Démonstration d'un pipeline d'intégration et déploiement continus</p>
+    </header>
+
+    <section class="grid-layout">
+      <!-- Status Card -->
+      <article class="glass-card status-card">
+        <div class="card-header">
+          <h2>Statut du Backend</h2>
+          <div id="status-indicator" class="status-indicator offline">
+            <span class="pulse"></span>
+            <span class="status-text">Hors ligne</span>
+          </div>
+        </div>
+        <p class="card-desc">Statut en temps réel de la connexion à l'API Express.</p>
+        <button id="refresh-btn" class="btn btn-primary">
+          <svg class="icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 1121.21 4.89M9 11l3 3L22 4" />
+          </svg>
+          Actualiser
+        </button>
+      </article>
+
+      <!-- Response Panel -->
+      <article class="glass-card response-card">
+        <div class="card-header">
+          <h2>Réponse de l'API</h2>
+        </div>
+        <div class="code-visualizer">
+          <pre><code id="api-response-data">// Cliquez sur "Actualiser" pour récupérer les données.</code></pre>
+        </div>
+      </article>
+
+      <!-- Pipeline Visualization Card -->
+      <article class="glass-card pipeline-card full-width">
+        <div class="card-header">
+          <h2>Architecture du Pipeline CI/CD</h2>
+        </div>
+        
+        <div class="pipeline-flow">
+          <div class="pipeline-step completed">
+            <div class="step-icon">💻</div>
+            <div class="step-details">
+              <h3>Commit & Push</h3>
+              <p>Dépôt Git local</p>
+            </div>
+          </div>
+          <div class="pipeline-connector"></div>
+          
+          <div class="pipeline-step active">
+            <div class="step-icon">🤖</div>
+            <div class="step-details">
+              <h3>GitHub Actions</h3>
+              <p>Fichier ci.yml</p>
+            </div>
+          </div>
+          <div class="pipeline-connector"></div>
+
+          <div class="pipeline-step">
+            <div class="step-icon">🐳</div>
+            <div class="step-details">
+              <h3>Docker Build</h3>
+              <p>Multi-stage & Compose</p>
+            </div>
+          </div>
+          <div class="pipeline-connector"></div>
+
+          <div class="pipeline-step">
+            <div class="step-icon">📦</div>
+            <div class="step-details">
+              <h3>Registry</h3>
+              <p>Docker Hub push</p>
+            </div>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <footer class="app-footer">
+      <p>Fait avec ❤️ pour le TP CI:CD • Docker Multi-Stage • GitHub Actions</p>
+    </footer>
+  </main>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
